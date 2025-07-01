@@ -1,0 +1,65 @@
+/*
+============================================================
+  Fichero: screen.h
+  Creado: 30-06-2025
+  Ultima Modificacion: dimarts, 1 de juliol de 2025, 06:29:51
+  oSCAR jIMENEZ pUIG                                       
+============================================================
+*/
+
+#include <stdlib.h>
+#include <time.h>
+
+#include "xvideo.h"
+
+typedef unsigned char u1;
+typedef unsigned short u2;
+typedef signed char s1;
+
+typedef enum {NON,VER,HOR} Flip;
+
+int scr_init(u2 w,u2 h);
+//iniciamos el modo pantalla
+
+void scr_end();
+//liberamos pantalla
+
+void scr_background(X_Color color);
+//cambia el color del fondo
+
+void scr_show();
+//hace un flush para mostrar la pantalla
+
+u1 pal_new(u1* palette,u1 colors);
+//inicia una nueva paleta, de nueve colores como maximo, devuelve el identificador
+//colors se refiere al numero de colores que tendra la paleta
+
+u1 pal_ins(u1 palette,u1 id,X_Color color);
+//se guarda un color en la paleta ya definida (id=1 to 9)
+
+u1 spr_new(u1* sprite,u1 w,u1 h,u1* data);
+//crea un sprite de una cierta dimension, devuelve el identificador
+
+u1 spr_ins(u1 sprite,u1 palette,Flip flip,u1 ratio,u2 x,u2 y);
+//pone un sprite en una posicion de la pantalla
+
+u1 key_set(u1 flag,KeySym ks);
+//asocia una tecla a un valor de flag (de 1 a 128), maximo 8.
+
+s1 key_chk();
+//lee el teclado y establece las banderas, devuelve 1 si hay algun press o release
+
+u1 key_isp(u1 flag);
+//devuelve si el flag se corresponde a las teclas pulsadas
+
+void key_unp(u1 flag);
+//desconecta una tecla pulsada
+
+void scr_pau(double time);
+//hacemos una pausa
+
+int scr_rnd(int a,int b);
+//numero aleatorio entre a y b, ambos incluidos
+
+
+
