@@ -82,6 +82,6 @@ check:
 #MAKEFILE VARIABLE
 
 NAME = color 
-SCRS = xvideo.c screen.c main.c
+SCRS = xvideo.c screen.c
 INCLUDES = -lX11
 
