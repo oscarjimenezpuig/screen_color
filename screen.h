@@ -2,7 +2,7 @@
 ============================================================
   Fichero: screen.h
   Creado: 30-06-2025
-  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:24:57
+  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:46:03
   oSCAR jIMENEZ pUIG                                       
 ============================================================
 */
@@ -33,6 +33,9 @@ void scr_background(Color color);
 
 void scr_era(u2 x,u2 y,u2 w,u2 h);
 //se borra una zona de la pantalla
+
+vpid scr_clr();
+//borrado de toda la pantalla
 
 void scr_show();
 //hace un flush para mostrar la pantalla

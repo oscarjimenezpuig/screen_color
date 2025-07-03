@@ -2,7 +2,7 @@
 ============================================================
   Fichero: screen.c
   Creado: 30-06-2025
-  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:32:44
+  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:46:59
   oSCAR jIMENEZ pUIG                                       
 ============================================================
 */
@@ -110,6 +110,10 @@ void scr_era(u2 x,u2 y,u2 w,u2 h) {
 		X_Point ps[]={p,b,c,d};
 		x_quadrilateral(ps,background);
 	}
+}
+
+void scr_clr() {
+	x_clear();
 }
 
 void scr_show() {
