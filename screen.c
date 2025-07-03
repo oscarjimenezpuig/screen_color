@@ -2,7 +2,7 @@
 ============================================================
   Fichero: screen.c
   Creado: 30-06-2025
-  Ultima Modificacion: dimecres, 2 de juliol de 2025, 03:50:21
+  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:32:44
   oSCAR jIMENEZ pUIG                                       
 ============================================================
 */
@@ -80,9 +80,36 @@ void scr_end() {
 	x_end();
 }
 
-void scr_background(X_Color c) {
-	background=c;
+static X_Color coltox(Color c) {
+	const double DIV=255.0;
+	double r=c.r;
+	double g=c.g;
+	double b=c.b;
+	return x_color(r/DIV,g/DIV,b/DIV);
+}
+
+void scr_background(Color c) {
+	background=coltox(c);
 	x_background(background);
+}
+
+void scr_era(u2 x,u2 y,u2 w,u2 h) {
+	X_Point p={x,y};
+	if(w==1 && h==1) {
+		x_point(p,background);
+	} else if(w==1) {
+		X_Point d={x,y+h-1};
+		x_line(p,d,background);
+	} else if(h==1) {
+		X_Point d={x+w-1,y};
+		x_line(p,d,background);
+	} else if(w*h!=0) {
+		X_Point b={x,y+h-1};
+		X_Point c={x+w-1,y+h-1};
+		X_Point d={x+w-1,y};
+		X_Point ps[]={p,b,c,d};
+		x_quadrilateral(ps,background);
+	}
 }
 
 void scr_show() {
@@ -108,14 +135,6 @@ u1 pal_new(u1* p,u1 cs) {
 		}
 	}
 	return 0;
-}
-
-static X_Color coltox(Color c) {
-	const double DIV=255.0;
-	double r=c.r;
-	double g=c.g;
-	double b=c.b;
-	return x_color(r/DIV,g/DIV,b/DIV);
 }
 
 u1 pal_ins(u1 p,u1 id,Color c) {

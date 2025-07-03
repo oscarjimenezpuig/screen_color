@@ -2,7 +2,7 @@
 ============================================================
   Fichero: screen.h
   Creado: 30-06-2025
-  Ultima Modificacion: dimecres, 2 de juliol de 2025, 03:49:40
+  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:24:57
   oSCAR jIMENEZ pUIG                                       
 ============================================================
 */
@@ -28,8 +28,11 @@ int scr_init(u2 w,u2 h);
 void scr_end();
 //liberamos pantalla
 
-void scr_background(X_Color color);
+void scr_background(Color color);
 //cambia el color del fondo
+
+void scr_era(u2 x,u2 y,u2 w,u2 h);
+//se borra una zona de la pantalla
 
 void scr_show();
 //hace un flush para mostrar la pantalla
