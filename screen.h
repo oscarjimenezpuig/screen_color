@@ -2,7 +2,7 @@
 ============================================================
   Fichero: screen.h
   Creado: 30-06-2025
-  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:46:03
+  Ultima Modificacion: dijous, 3 de juliol de 2025, 05:09:33
   oSCAR jIMENEZ pUIG                                       
 ============================================================
 */
@@ -34,7 +34,7 @@ void scr_background(Color color);
 void scr_era(u2 x,u2 y,u2 w,u2 h);
 //se borra una zona de la pantalla
 
-vpid scr_clr();
+void scr_clr();
 //borrado de toda la pantalla
 
 void scr_show();
@@ -49,6 +49,10 @@ u1 pal_new(u1* palette,u1 colors);
 
 u1 pal_ins(u1 palette,u1 id,Color color);
 //se guarda un color en la paleta ya definida (id=1 to 9)
+
+u1 dat_new(u1* val,u1 lines,char* data[]);
+//a partir de un conjunto de cadena de caracteres (entre 0 i 9) se define la data como conjunto de valores
+//cualquier valor desconocido es 0, se devuelve la dimension de la matriz val
 
 u1 spr_new(u1* sprite,u1 w,u1 h,u1* data);
 //crea un sprite de una cierta dimension, devuelve el identificador

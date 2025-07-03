@@ -2,7 +2,7 @@
 ============================================================
   Fichero: screen.c
   Creado: 30-06-2025
-  Ultima Modificacion: dijous, 3 de juliol de 2025, 04:46:59
+  Ultima Modificacion: dijous, 3 de juliol de 2025, 05:09:45
   oSCAR jIMENEZ pUIG                                       
 ============================================================
 */
@@ -151,6 +151,19 @@ u1 pal_ins(u1 p,u1 id,Color c) {
 	}
 	return 0;
 }
+
+u1 dat_new(u1* val,u1 ls,char* d[]) {
+	u1* pval=val;
+	for(u1 k=0;k<ls;k++) {
+		char* ptr=d[k];
+		while(*ptr!='\0') {
+			if(*pval>='0' && *pval<='9') *ptr=*pval-'0';
+			else *ptr=0;
+			ptr++;
+		}
+	}
+	return pval-val;
+}			
 
 static u1 spr_data_new(Sprite* s,u1 w,u1 h,u1* d) {
 	if((s->data=malloc(sizeof(u1)*w*h))) {
